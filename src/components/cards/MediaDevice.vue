@@ -1,27 +1,24 @@
 <template>
     <v-card>
-        <v-card-title >
-            <div>
-            <h3 class="headline mt-0">MediaDevice</h3>
-            </div>
-        </v-card-title>
+        
+        <v-toolbar>
+            <v-toolbar-title>MediaDevice</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+                <v-btn icon>
+                    <v-icon color="success" v-if="available">done</v-icon>
+                    <v-icon color="error" v-else>error</v-icon>
+                </v-btn>
+            </v-toolbar-items>
+        </v-toolbar>
         <v-card-text>
-            <v-checkbox
-                v-for="value in bools"
-                :key="'bool' + value"
-                :label="value"
-                readonly
-                color="success"
-                :indeterminate="modelValue(value)"
-                :success="modelValue(value)"
-            ></v-checkbox>
         </v-card-text>
         <v-card-actions>
             <v-dialog
                 v-model="testerView"
                 width="900"
             >
-                <v-btn slot="activator" flat @click="showTester">Try media device</v-btn>
+                <!-- <v-btn slot="activator" flat @click="showTester">Try media device</v-btn> -->
                 <v-card>
                     <v-card-title
                         class="headline"
@@ -49,7 +46,6 @@ import {mapGetters} from 'vuex'
 export default {
     data () {
         return {
-            bools: ['available', 'getUserMedia'],
             testerView: false
         }
     },

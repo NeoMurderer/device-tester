@@ -2,16 +2,28 @@
   <v-app>
     <v-toolbar
       app
-      :clipped-left="clipped"
     >
     <v-toolbar-title v-text="title"></v-toolbar-title>
     </v-toolbar>
     <v-content>
       <HelloWorld/>
     </v-content>
-    <v-footer :fixed="fixed" app>
+    <v-footer app>
       <span>&copy; 2018</span>
     </v-footer>
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="6000"
+      color="error"
+      :top="true"
+      :vertical="true"
+    >
+      {{errorText}}
+      <v-btn
+        flat
+        @click="snackbar = false"
+      >Close</v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -23,19 +35,15 @@ export default {
   components: {
     HelloWorld
   },
+  errorCaptured (err, vm, info) {
+      this.errorText = err.message
+      this.snackbar = true
+  },
   data () {
     return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      snackbar: false,
+      title: 'Browser tester',
+      errorText: 'Hello'
     }
   }
 }

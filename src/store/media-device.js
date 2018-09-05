@@ -9,7 +9,7 @@ export default {
     },
     getters: {
         available () {
-            return false
+            return navigator.mediaDevices
         },
         getUserMedia () {
             const getUserMedia = ((navigator.mediaDevices && navigator.mediaDevices.getUserMedia)

@@ -1,9 +1,23 @@
 <template>
-  <v-container fluid>
-    
-      <v-layout >
-        <v-flex xs4 sm4 >
+  <v-container fluid grid-list-md>
+      <v-layout wrap row>
+        <v-flex xs4 d-flex>
           <media-device></media-device>
+        </v-flex>
+        <v-flex xs4 d-flex>
+          <media-recorder></media-recorder>
+        </v-flex>
+        <v-flex xs4 d-flex>
+          <user-agent></user-agent>
+        </v-flex>
+        <v-flex xs4>
+          <local-storage></local-storage>
+        </v-flex>
+        <v-flex xs4>
+          <session-storage></session-storage>
+        </v-flex>
+        <v-flex xs4>
+          <cookie-storage></cookie-storage>
         </v-flex>
       </v-layout>
   </v-container>
@@ -11,11 +25,21 @@
 
 <script>
 import MediaDevice from './cards/MediaDevice'
+import MediaRecorder from './cards/MediaRecorder'
+import UserAgent from './cards/UserAgent'
+import LocalStorage from './cards/LocalStorage'
+import SessionStorage from './cards/SessionStorage'
+import CookieStorage from './cards/CookieStorage'
 export default {
   components: {
-    MediaDevice
+    MediaDevice,
+    MediaRecorder,
+    UserAgent,
+    LocalStorage,
+    SessionStorage,
+    CookieStorage,
   },
-  name: 'HelloWorld',
+  name: 'BrowserCheck',
   data() {
     return {
     }
